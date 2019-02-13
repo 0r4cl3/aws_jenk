@@ -1,6 +1,7 @@
 resource "aws_vpc" "Terraform-VPC" {
   cidr_block = "10.0.0.0/16"
   enable_dns_support = true
+  disable_api_termination = true
   enable_dns_hostnames = true
   tags = {
     Name = "TERRAFORM-VPC"
@@ -84,7 +85,7 @@ resource "aws_instance" "private-instance" {
 
 resource "aws_instance" "public-instance" {
   root_block_device {
-    volume_size = 5
+    volume_size = 15
     volume_type = "gp2"
   }
   ami = "ami-0ff27f59446639141"
